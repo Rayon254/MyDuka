@@ -1,0 +1,319 @@
+.navbar-nav .nav-link {
+    font-size: 18px
+}
+
+
+/* Style for the buttons */
+.btn,
+.nav-button,
+.product-button,
+.btn-search,
+.btn-logout,
+.btnmodal {
+    background-color: green;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+.btn:hover,
+.nav-button:hover,
+.product-button:hover,
+.btn-search:hover,
+.btn-logout:hover,
+.btnmodal:hover {
+    background-color: darkgreen;
+}
+
+/* Button active state */
+.btn:active,
+.nav-button:active,
+.product-button:active,
+.btn-search:active,
+.btn-logout:active,
+.btnmodal:active {
+    background-color: green;
+}
+
+.nav-button {
+
+
+    padding-left: 260px;
+}
+
+.nav-link {
+
+    font-size: 10px;
+
+}
+
+
+.product-button {
+
+    background-color: green;
+    color: white;
+    padding: 5px;
+}
+
+.btn-search {
+
+    background-color: green;
+    color: white;
+    padding: 8px;
+
+}
+
+.btn-logout {
+    background-color: green;
+    color: white;
+
+
+
+}
+
+.btn2-logout {
+    padding-left: 280px;
+
+}
+
+
+.nav-item {
+
+    font-size: 4px;
+}
+
+
+
+.navbar-brand {
+
+    font-size: 40px;
+    padding-left: 40px;
+    color: #008000;
+    font-weight: bold;
+
+}
+
+.nav-item .nav-link {
+    font-size: 14px;
+    padding-left: 380px;
+
+}
+
+.heading {
+
+    font-size: 60px;
+    color: green;
+    padding-left: 300px;
+    padding-top: 50px;
+    font-weight: bold;
+}
+
+
+
+.headings {
+    font-weight: bold;
+    text-align: center;
+    padding-top: 90px;
+    display: flex;
+    padding-right: 90px;
+}
+
+.contactbutton {
+    text-align: center;
+    padding: 14px;
+    border-radius: 0;
+    font-weight: bold;
+    color: black;
+    margin-top: auto;
+    /* Align button to the bottom of the column */
+    text-decoration: none;
+    /* Remove underline from the button link */
+    font-size: 16px;
+}
+
+
+
+.nav .navbar-nav {
+
+    padding-left: 210px;
+    font-size: 13px;
+
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 16px !important;
+    /* Adjust the font size as needed */
+    font-weight: bold !important;
+
+}
+
+
+
+
+.navbar2 {
+
+    padding-top: 70px;
+
+
+}
+
+.btnmodal {
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: green;
+}
+
+
+.headingimage {
+
+    padding-right: 50px;
+    height: 400px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+    padding-bottom: 5px;
+}
+
+.navbar-nav {
+    display: flex;
+    /* Use flexbox to align items horizontally */
+    align-items: center;
+    /* Align items vertically center */
+    justify-content: space-between;
+    /* Distribute space between items */
+}
+
+.nav-item {
+    list-style: none;
+    /* Remove default list styles */
+    margin-right: 15px;
+    /* Add margin between nav items */
+}
+
+.nav-item:last-child {
+    margin-right: 0;
+    /* Remove margin from the last nav item */
+}
+
+.table-container {
+    /* Push the table to the right */
+    padding-left: 40px;
+    /* Add some left padding */
+    text-align: center;
+    /* Center align the table content */
+    font-weight: bold;
+    max-height: 500px;
+    /* Set the maximum height for the table */
+    overflow-y: auto;
+}
+
+.table tbody tr td,
+.table tbody tr th {
+    padding: 5px;
+    /* Adjust the padding as needed */
+    margin: 0;
+    /* Remove any margin */
+}
+
+
+.logos {
+
+    color: #008000;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 19px;
+    padding-right: 40px;
+    font-size: 30px;
+    padding-left: 40px;
+}
+
+.btn-danger,
+.btn-primary,
+.btn-secondary,
+.btn-outline-secondary {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.btn-outline-secondary {
+    padding: 8px;
+    font-size: 12px;
+    height: 30px;
+    width: 480px;
+}
+
+.form-control {
+    height: 30px;
+    width: 1000px;
+    padding-left: 10px;
+}
+
+.d-flex {
+    padding-left: 10px;
+}
+
+/* Adjust the margin between buttons */
+
+
+.col-md-4 {
+
+    padding-left: 140px;
+}
+
+
+.loginlogo {
+
+    color: rgb(179, 212, 179);
+    font-weight: bold;
+
+}
+
+.bodyindex {
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 700%;
+    /* Set width to 100% or any desired value */
+    height: 400px;
+    /* Set height to any desired value */
+    background-size: cover;
+    background-image: url(https://img.freepik.com/free-photo/woman-shopping-vegetables-supermarket_1157-37870.jpg?w=740&t=st=1711552277~exp=1711552877~hmac=5aaa2052a06daec352282a709ed7d1a19ac1bfe2c84e7b7c8364b8259549a7da)
+}
+
+/* In your CSS file */
+.flash-success {
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid darkgreen;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.flash-error {
+    color: red;
+    background-color: lightcoral;
+    border: 1px solid darkred;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Define styles for other flash message categories as needed */
+.btn-submit {
+
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: green;
+}
+
+label .hide-menu .table {
+
+    color: rgb(0, 0, 0);
+}

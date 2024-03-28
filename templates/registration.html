@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My DUKA</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../static/styles.min.css" />
+  <link rel="stylesheet" href="../static/navigation.css" />
+</head>
+
+<body>
+
+
+
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+                <a href="/index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <h2 class="loginlogo">MY DUKA</h2>
+                </a>
+
+
+                <form class="registration" action="/registration" method="POST" id="registration" autocomplete="off">
+                  <div class="mb-3">
+                    <label for="exampleInputtext1" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" name="full_name" aria-describedby="textHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" name="email_address" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <div id="flash-messages">
+                      {% for category, message in messages %}
+                        {% if category == 'success' %}
+                          <div class="alert alert-success">{{ message }}</div>
+                        {% elif category == 'error' %}
+                          <div class="alert alert-danger">{{ message }}</div>
+                        {% else %}
+                          <!-- Handle other categories if needed -->
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endwith %}
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
+                  
+                
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                    <a class="text-primary fw-bold ms-2" href="/login">Sign In</a>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("full_name").value = "";
+      document.getElementById("email_address").value = "";
+      document.getElementById("password").value = "";
+    });
+  </script>
+</body>
+
+</html>

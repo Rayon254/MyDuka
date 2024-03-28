@@ -1,0 +1,176 @@
+{% extends "navbar.html" %}
+
+{% block head %}
+{{ super() }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/styles.min.css" />
+<link rel="stylesheet" href="../static/navigation.css" />
+<link rel="stylesheet" href="../static/charts.css" />
+{% endblock %}
+
+{% block content %}
+<div class="navbar2">
+    <p>{{pp}}</p>
+    <p>{{sp}}</p>
+
+
+
+
+    <div class="canvas-container">
+        <div>
+            <h2>Sales per Product</h2>
+            <canvas class="bar-chart" id="bar-chart"></canvas>
+        </div>
+        <div>
+            <h2>Profit per Product</h2>
+            <canvas class="bar-chart2" id="bar-chart2"></canvas>
+        </div>
+        <div>
+            <h2>Total Daily Sales</h2>
+            <canvas class="line-chart" id="line-chart"></canvas>
+        </div>
+        <div>
+            <h2>Total Daily Profits</h2>
+            <canvas class="line-chart2" id="line-chart2"></canvas>
+        </div>
+    </div>
+
+
+    <canvas class="bar-chart" id="bar-chart"></canvas>
+    <canvas class="bar-chart2" id="bar-chart2"></canvas>
+    <canvas class="line-chart" id="line-chart"></canvas>
+    <canvas class="line-chart2" id="line-chart2"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</div>
+
+
+
+<script>
+
+
+
+   // Bar chart
+   new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+        labels: {{ names | safe }},
+        datasets: [
+            {
+                label: "Sales",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: {{ value | safe }}
+            }
+        ]
+    },
+    options: {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: ' '
+        },
+        scales: {
+            xAxes: [{
+                barPercentage: 0.5, // Adjust the space between bars (0.8 means 80% of the available space)
+                categoryPercentage: 0.7 // Adjust the width of each bar
+            }]
+        }
+    }
+});
+
+
+
+
+    // Bar chart 2
+    new Chart(document.getElementById("bar-chart2"), {
+        type: 'bar',
+        data: {
+            labels: {{ names | safe}},
+        datasets: [
+        {
+            label: "Profits",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+            data: {{ profit | safe}}
+                    }
+    ]
+            },
+        options: {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: ' '
+        },
+        scales: {
+            xAxes: [{
+                barPercentage: 0.5, // Adjust the space between bars (0.8 means 80% of the available space)
+                categoryPercentage: 0.7 // Adjust the width of each bar
+            }]
+        }
+    }
+});
+
+
+    // line chart
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: {{ day | safe}},
+        datasets: [{
+            data: {{ profit | safe}},
+        label: "Sales",
+        borderColor: "#3e95cd",
+        fill: false
+      }, {
+
+        }, {
+            data: [],
+            label: " ",
+            borderColor: "#c45850",
+            fill: false
+        }
+    ]
+  },
+        options: {
+        title: {
+            display: true,
+            text: ' '
+        }
+    }
+            });
+
+
+
+
+
+    // line chart2
+    new Chart(document.getElementById("line-chart2"), {
+        type: 'line',
+        data: {
+            labels: {{ day | safe}},
+        datasets: [{
+            data: {{ sl | safe}},
+        label: "Profits",
+        borderColor: "#3e95cd",
+        fill: false
+        }
+    ]
+  },
+        options: {
+        title: {
+            display: true,
+            text: ' '
+        }
+    }
+            });
+
+</script>
+
+</div>{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</script>
+
+{% endblock %}
