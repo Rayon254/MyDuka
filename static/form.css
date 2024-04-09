@@ -1,0 +1,29 @@
+.form-check-input {
+
+    border-color: black;
+}
+
+.dropdown-item .delete {
+
+    font-size: 14px;
+}
+
+.card-body {
+
+    text-align: center;
+
+
+}
+
+.contactus {
+
+    color: #008000;
+    font-weight: bold;
+}
+
+.search {
+
+    margin-left: 90px;
+    width: 950px;
+}
+

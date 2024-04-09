@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MY DUKA</title>
-
+  <link rel="stylesheet" href="../static/indexnav.css" />
+  <link rel="stylesheet" href="../static/navigation.css" />
   <link rel="stylesheet" href="../static/styles.min.css" />
 </head>
 
 <body>
 
 
-  {% with messages=get_flashed_messages() %}
+  <!-- {% with messages=get_flashed_messages() %}
   {% if messages %}
   <ul class="flashes">
     {% for message in messages %}
@@ -20,7 +21,7 @@
     {% endfor %}
   </ul>
   {% endif %}
-  {% endwith %}
+  {% endwith %} -->
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -32,22 +33,24 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="/index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <h2>MY DUKA</h2>
+                  <img src="/static/logo.png" alt="Logo" class="logo">
+                  <h5 class="registrationlogo">Sign in to Continue</h5>
                 </a>
 
-                <form class="loginform" action="/login" method="POST">
+                <form class="loginform" action="/login" method="POST" autocomplete="off">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" name="email_address" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" name="email_address" aria-describedby="emailHelp"
+                      autocomplete="off">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" autocomplete="off" required>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
                       <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label text-dark" for="flexCheckChecked">
+                      <label class="form-check-label text-dark" for="flexCheckChecked" required>
                         Remember this Device
                       </label>
                     </div>
@@ -56,23 +59,23 @@
                   </div>
                   {% with messages = get_flashed_messages(with_categories=true) %}
                   {% if messages %}
-                    <div id="flash-messages">
-                      {% for category, message in messages %}
-                        {% if category == 'success' %}
-                          <div class="alert alert-success">{{ message }}</div>
-                        {% elif category == 'error' %}
-                          <div class="alert alert-danger">{{ message }}</div>
-                        {% else %}
-                          <!-- Handle other categories if needed -->
-                        {% endif %}
-                      {% endfor %}
-                    </div>
+                  <div id="flash-messages">
+                    {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="alert alert-success">{{ message }}</div>
+                    {% elif category == 'error' %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                    {% else %}
+                    <!-- Handle other categories if needed -->
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                   {% endif %}
-                {% endwith %}
+                  {% endwith %}
                   <button type="submit" class="btn btn-primary w-100 py-2 fs-4 mb-4 rounded-2">Sign In</button>
                   <!-- Changed anchor tag to button for form submission -->
                   <div class="d-flex align-items-center justify-content-center">
-                  
+
                     <p class="fs-4 mb-0 fw-bold">New to MY DUKA?</p>
                     <a class="text-primary fw-bold ms-2" href="/registration">Create an account</a>
                   </div>
@@ -85,7 +88,16 @@
       </div>
     </div>
   </div>
-
+  <script>
+    function checkAcknowledgment() {
+      var acknowledgmentCheckbox = document.getElementById('acknowledge-checkbox');
+      if (!acknowledgmentCheckbox.checked) {
+        alert('Please acknowledge the message before proceeding.');
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+  </script>
 </body>
 
 </html>

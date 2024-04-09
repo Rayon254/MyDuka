@@ -1,0 +1,137 @@
+.navbar {
+    display: flex;
+    /* Use flexbox layout */
+    justify-content: space-between;
+    /* Distribute items along the main axis */
+    align-items: center;
+    /* Center items vertically */
+    height: 80px;
+    /* Adjust the height as needed */
+    background-color: #fff;
+    /* Navbar background color */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add box-shadow */
+    z-index: 1000;
+    /* Ensure the navbar is on top of other elements */
+}
+
+.brand-logo {
+    /* myduka logo */
+
+    padding-left: 100px;
+
+}
+
+.logo {
+
+    width: 160px;
+    /* Adjust width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+
+
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    /* Add margin to the top of the navbar to create space */
+    margin-right: 85px;
+    /* Add margin to the right */
+    margin-top: 10px;
+    /* Adjust this value to move the menu down */
+}
+
+.navbar-nav.right {
+    /* Remove margin-left */
+    margin-left: 100px;
+
+    /* Pushes items to the far right */
+}
+
+.nav-item:not(:last-child) .nav-link {
+    margin-right: 25px;
+    /* Adjust the space between menu items as needed */
+}
+
+
+.navbar-nav.right li.nav-item a.nav-link {
+    font-size: 14px;
+    /* Adjust other styles as needed */
+}
+
+.nav-item .nav-link {
+    /* entire menu without logo */
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 20px;
+
+
+}
+
+
+.heading {
+    /* myduka sales heading  */
+    font-size: 45px;
+    color: darkgreen;
+    padding-left: 290px;
+    padding-top: 50px;
+    font-weight: bolder;
+}
+
+.headings {
+    /* myduka sales heading  */
+
+    font-weight: bold;
+    text-align: center;
+    padding-top: 90px;
+    display: flex;
+    padding-right: 90px;
+}
+
+.bodyindex {
+    /* body of index */
+    max-width: 100%;
+    height: 640px;
+    position: relative;
+}
+
+.bodyindex::before {
+    content: "";
+    background-image: url(../static/wallpaper.jpg);
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px); /* Adjust the blur intensity as needed */
+    z-index: -1; /* Ensure it's layered behind other content */
+}
+
+
+
+.contactbutton {
+    /* get started button */
+    text-align: center;
+    padding: 14px;
+    border-radius: 0;
+    font-weight: bold;
+    color: black;
+    margin-top: auto;
+    /* Align button to the bottom of the column */
+    text-decoration: none;
+    /* Remove underline from the button link */
+    font-size: 16px;
+}
+
+
+
+.btn-registration {
+
+    background-color: green;
+    color: white;
+    margin-top: 10px;
+    border-radius: 0;
+}

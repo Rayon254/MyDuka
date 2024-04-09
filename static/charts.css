@@ -1,56 +1,35 @@
-.canvas-container canvas {
-    max-width: 50%;
-    /* Set the maximum width of the canvas */
-    height: auto;
-    /* Allow the height to adjust automatically */
-    font-size: 29px;
-    /* Increase the font size */
- 
-  
-    /* Two columns */
-   
-    /* Gap between columns */
-    padding-left: 40px;
-    padding-bottom: 50px;
-    margin-bottom: 30px;
-    border-right: none;
-}
+.h5 {
 
-
-
-
-.bar {
-    width: 20px;
-    background-color: #007bff;
-    margin-right: 10px;
-    border: 1px solid #007bff;
-    /* Border for each bar */
-}
-
-
-.bar-chart,
-.bar-chart2,
-.line-chart,
-.line-chart2 {
-    max-width: 100%;
-    /* Set the maximum width of the chart */
-    height: auto;
-    /* Allow the height to adjust automatically */
-    border: 1px solid #ccc;
-    /* Border for the chart */
-    border-radius: 5px;
-    /* Optional: Add border-radius for rounded corners */
-    font-size: 19px;
-    /* Increase the font size */
-}
-
-
-/* .canvas-container div {
-    margin-bottom: 20px; /* Space between each chart with heading */
-
-.canvas-container h2 {
-    font-size: 20px;
-   
-    padding-left: 50px;
     font-weight: bold;
+}
+
+.totalannual {
+
+    background-color: lightgreen;
+    border-radius: 13px;
+    width: 300px;
+    margin-left: 180px;
+
+}
+
+
+.myPieChart {
+
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    width: 300px;
+    height: 300px;
+}
+
+.totalprofits {
+
+    background-color: lightcoral;
+    border-radius: 13px;
+    width: 300px;
+}
+
+
+.navbar2 {
+
+    padding-top: 35px;
 }

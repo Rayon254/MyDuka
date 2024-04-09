@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../static/styles.min.css" />
 <link rel="stylesheet" href="../static/navigation.css" />
 <link rel="stylesheet" href="../static/charts.css" />
+<link rel="stylesheet" href="../static/table.css" />
 {% endblock %}
 
 
@@ -13,7 +14,7 @@
 {% block content %}
 <div class="navbar2">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="salesbtn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Make Sales
     </button>
 
@@ -40,6 +41,7 @@
                             <input type="number" name="quantity" id="quantity">
                         </div>
                         <div class="btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button class="btn-submit" type="submit" >Submit Sale</button>
                         </div>
                     </form>
@@ -52,19 +54,29 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>I.D</th>
-                    <th>Product ID</th>
-                    <th>Quantity</th>
-                    <th>Created at</th>
+                    <th></th>
+                    <th>ID</th>
+                    <th>PRODUCT ID</th>
+                    <th>QUANTITY</th>
+                    <th>SELLING DATE</th>
                 </tr>
             </thead>
             <tbody>
                 {% for i in sales %}
                 <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name=" " value=" ">
+                            <label class="form-check-label" for="select_all">
+    
+                            </label>
+                        </div>
+                    </td>
                     <td>{{i[0]}}</td>
                     <td>{{i[1]}}</td>
                     <td>{{i[2]}}</td>
                     <td>{{i[3]}}</td>
+                    
                 </tr>
                 {% endfor %}
             </tbody>

@@ -1,13 +1,51 @@
+/* Adjust the margin-top and margin-bottom properties as needed */
+.sidebar-nav {
+    margin-bottom: 20px;
+    padding-top: 129px;
+
+}
+
+.logo-img {
+    margin-right: 10px;
+    /* Adjust this value as needed */
+}
+
+/* Adjust the height and width of the logo as needed */
+.logos {
+    color: #008000;
+    height: 110px;
+    /* Adjusted height */
+    width: 140px;
+
+}
+
+/* Adjust the height and width of the navbar-brand2 */
+.navbar-brand2 {
+    min-height: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
 .navbar-nav .nav-link {
     font-size: 18px
 }
+
+.navbar2 {
+    /* entire body */
+
+    padding-left: 30px;
+
+}
+
+
 
 
 /* Style for the buttons */
 .btn,
 .nav-button,
 .product-button,
-.btn-search,
+
 .btn-logout,
 .btnmodal {
     background-color: green;
@@ -56,15 +94,10 @@
     background-color: green;
     color: white;
     padding: 5px;
-}
-
-.btn-search {
-
-    background-color: green;
-    color: white;
-    padding: 8px;
 
 }
+
+
 
 .btn-logout {
     background-color: green;
@@ -87,58 +120,27 @@
 
 
 
-.navbar-brand {
-
-    font-size: 40px;
-    padding-left: 40px;
-    color: #008000;
-    font-weight: bold;
-
+.btn-search {
+    background-color: green;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.nav-item .nav-link {
-    font-size: 14px;
-    padding-left: 380px;
-
+.btn-search:hover {
+    background-color: darkgreen;
 }
 
-.heading {
-
-    font-size: 60px;
-    color: green;
-    padding-left: 300px;
-    padding-top: 50px;
-    font-weight: bold;
+.btn-search:active {
+    background-color: green;
 }
-
-
-
-.headings {
-    font-weight: bold;
-    text-align: center;
-    padding-top: 90px;
-    display: flex;
-    padding-right: 90px;
-}
-
-.contactbutton {
-    text-align: center;
-    padding: 14px;
-    border-radius: 0;
-    font-weight: bold;
-    color: black;
-    margin-top: auto;
-    /* Align button to the bottom of the column */
-    text-decoration: none;
-    /* Remove underline from the button link */
-    font-size: 16px;
-}
-
 
 
 .nav .navbar-nav {
 
-    padding-left: 210px;
+    padding-left: 10px;
     font-size: 13px;
 
 }
@@ -150,15 +152,13 @@
 
 }
 
-
-
-
-.navbar2 {
-
-    padding-top: 70px;
-
-
+.navbar-nav .nav-link {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding-left: 10px;
+    /* Adjust this value as needed */
 }
+
 
 .btnmodal {
     color: white;
@@ -174,99 +174,82 @@
     height: 400px;
 }
 
-.navbar-brand {
-    font-weight: bold;
-    font-size: 30px;
-    color: green;
-    padding-bottom: 5px;
-}
+
 
 .navbar-nav {
     display: flex;
     /* Use flexbox to align items horizontally */
-    align-items: center;
-    /* Align items vertically center */
-    justify-content: space-between;
-    /* Distribute space between items */
+
+
 }
 
-.nav-item {
-    list-style: none;
-    /* Remove default list styles */
-    margin-right: 15px;
-    /* Add margin between nav items */
-}
 
 .nav-item:last-child {
     margin-right: 0;
     /* Remove margin from the last nav item */
 }
 
-.table-container {
-    /* Push the table to the right */
-    padding-left: 40px;
-    /* Add some left padding */
-    text-align: center;
-    /* Center align the table content */
-    font-weight: bold;
-    max-height: 500px;
-    /* Set the maximum height for the table */
-    overflow-y: auto;
-}
-
-.table tbody tr td,
-.table tbody tr th {
-    padding: 5px;
-    /* Adjust the padding as needed */
-    margin: 0;
-    /* Remove any margin */
-}
 
 
-.logos {
 
-    color: #008000;
-    font-weight: bold;
-    padding-bottom: 5px;
-    padding-top: 19px;
-    padding-right: 40px;
-    font-size: 30px;
-    padding-left: 40px;
-}
+/*  */
 
 .btn-danger,
 .btn-primary,
-.btn-secondary,
-.btn-outline-secondary {
+.btn-secondary {
+
+    padding: 7px;
+    font-size: 12px;
+}
+
+.btn-product {
+
+
     padding: 5px;
     font-size: 12px;
+    background-color: #008000;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    width: 120px;
+    margin-right: 140px;
 }
+
+.salesbtn {
+
+    background-color: #008000;
+    color: white;
+    border-color: #008000;
+    font-weight: bold;
+    margin-left: 740px;
+    padding: 5px;
+    border-radius: 2px;
+
+}
+
 
 .btn-outline-secondary {
-    padding: 8px;
+    padding: 5px 10px;
     font-size: 12px;
-    height: 30px;
-    width: 480px;
+    height: 34px;
+    width: auto;
+    font-weight: bold;
+
 }
 
-.form-control {
-    height: 30px;
-    width: 1000px;
-    padding-left: 10px;
+.form-control2 {
+    height: 35px;
+    width: 220px;
+    padding-right: 10px;
+
 }
 
-.d-flex {
-    padding-left: 10px;
+.search-form {
+    margin-right: 150px;
+
 }
 
 /* Adjust the margin between buttons */
-
-
-.col-md-4 {
-
-    padding-left: 140px;
-}
-
 
 .loginlogo {
 
@@ -275,16 +258,7 @@
 
 }
 
-.bodyindex {
-    background-position: center;
-    background-repeat: no-repeat;
-    max-width: 700%;
-    /* Set width to 100% or any desired value */
-    height: 400px;
-    /* Set height to any desired value */
-    background-size: cover;
-    background-image: url(https://img.freepik.com/free-photo/woman-shopping-vegetables-supermarket_1157-37870.jpg?w=740&t=st=1711552277~exp=1711552877~hmac=5aaa2052a06daec352282a709ed7d1a19ac1bfe2c84e7b7c8364b8259549a7da)
-}
+
 
 /* In your CSS file */
 .flash-success {
@@ -309,11 +283,95 @@
     background-color: green;
     color: white;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 6px;
     border-color: green;
+    font-size: 12px;
 }
 
 label .hide-menu .table {
 
     color: rgb(0, 0, 0);
+}
+
+
+.dropdown {
+
+    padding-right: 40px;
+
+}
+
+.logout {
+
+    padding-left: 920px;
+    padding-top: 7px;
+
+}
+
+.btn-link {
+
+    padding-top: 2px;
+    padding: 3px;
+    margin-right: 90px;
+    background-color: white;
+    color: black;
+}
+
+
+.result {
+
+    margin-left: 60px;
+
+}
+
+.result ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    gap: 100px;
+    /* Adjust the space between items */
+    margin-top: 20px;
+
+}
+
+
+.form-check-input {
+
+    border-color: black;
+}
+
+.logo-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    /* Remove any default padding */
+    margin: 0;
+    /* Remove any default margin */
+}
+
+.registrationlogo {
+    margin: -25px;
+
+}
+
+.card-body {
+
+    font-weight: bold;
+
+}
+
+
+
+.app-header {
+    background-color: lightcyan;
+    height: 60px;
+}
+
+.dashboard {
+
+
+    font-weight: bold;
+    padding-left: 50px;
 }

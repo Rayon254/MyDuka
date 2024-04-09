@@ -16,9 +16,9 @@ def get_products():
     curr.execute("select * from products;")
     prods=curr.fetchall()
     for prod in prods :   
-        print(prod)
+         return(prod)
 
-get_products()
+# get_products()
 
 
 #write a function to get sales define a cfunction (def)
@@ -27,7 +27,7 @@ def calc_sales():
     curr.execute("select * FROM sales")
     sales=curr.fetchall()
     for sale in sales:
-        print(sale)
+        return(sale)
 
 # calc_sales()
 
@@ -58,6 +58,8 @@ def insert_sales(values):
     curr.execute(insert,values)
     conn.commit()
 
+
+
 #sales per product
 def sales_product():
     display="select name,sum(selling_price*quantity) FROM products join sales on products.id=sales.pid Group by name;"
@@ -81,6 +83,15 @@ def daily_sales():
     data=curr.fetchall()
     return(data)
 
+# annual sale
+
+def annual_sale():
+    annual_sales="select extract(year from sales.created_at) AS year,sum(products.selling_price*sales.quantity) as Total_sales FROM products join sales on products.id=sales.pid Group by year Order by year;"
+    curr.execute(annual_sales)
+    data=curr.fetchall()
+    return(data)
+
+
 # profit per day
 
 def daily_profit():
@@ -89,6 +100,14 @@ def daily_profit():
     data=curr.fetchall()
     return(data)
 
+
+# annual profit
+
+def annual_profit():
+    annual_profits="select extract(year from sales.created_at) AS year, sum(selling_price-buying_price) FROM products join sales on products.id=sales.pid Group by year Order by year;"
+    curr.execute(annual_profits)
+    data=curr.fetchall()
+    return(data)
 
 #insert users 
 
@@ -117,7 +136,6 @@ def check_logins(email_address,password):
     return(check)
 
 def contact_us(values):
-    insert="insert into contacts(full_name,email_address,phone_number,message)values(%s,%s,%s,%s);"
     curr.execute(insert,values)
     conn.commit()
 
@@ -131,7 +149,7 @@ def delete_product(id):
         delete_sales_query = "DELETE FROM sales WHERE pid = %s;"
         curr.execute(delete_sales_query, (id,))
         conn.commit()
-        
+     
         # Then delete the product from the products table
         delete_product_query = "DELETE FROM products WHERE id = %s;"
         curr.execute(delete_product_query, (id,))
@@ -143,12 +161,31 @@ def delete_product(id):
         return(f"Error deleting product: {e}")
 
 
+def delete_sale(id):
+    # Delete the sale from the sales table
+    delete_query = "DELETE FROM sales WHERE id = %s;"
+    curr.execute(delete_query, (id,))
+    conn.commit()
+
+# delete_sale(9)
+
+
+
 # edit a product
 
 def edit_product(id, new_product_name, new_buying_price, new_selling_price, new_stock_quantity):
     update_query = "UPDATE products SET product_name = %s, buying_price = %s, selling_price = %s, stock_quantity = %s WHERE id = %s;"
     curr.execute(update_query, (new_product_name, new_buying_price, new_selling_price, new_stock_quantity, id))
     conn.commit()
+
+def search_result(product_name):
+    search_query = "SELECT * FROM products WHERE name LIKE %s;"
+    # Construct the wildcard search pattern
+    search_pattern = '%' + product_name + '%'
+    curr.execute(search_query, (search_pattern,))
+    check2 = curr.fetchone()
+    return check2
+
 
 
 

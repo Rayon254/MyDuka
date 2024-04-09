@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request, redirect, url_for, flash, session
-from database import insert_products, get_data, insert_sales, sales_product, profit_product, daily_sales, daily_profit, insert_users, check_email, check_logins, contact_us, delete_product, edit_product
+from database import annual_profit, annual_sale, search_result, insert_products, get_data, insert_sales, sales_product, profit_product, daily_sales, daily_profit, insert_users, check_email, check_logins, contact_us, delete_product, edit_product
 
 
 #create a flask instance
@@ -21,16 +21,16 @@ def home():
 def products():
     if 'email_address' not in session:
         flash("Login to Access This Page","error")
-    return redirect(url_for('login'))
-
+        return redirect(url_for('login'))
+    
     prods=get_data("products")
-    return render_template("products.html",products=prods)
+    return render_template("products.html",products=prods,id=id)
 
 @app.route('/sales')
 def sales ():
-    # if 'email_address' not in session:
-    #     flash("Login to Access This Page")
-    #     return redirect(url_for('sales'))
+    if 'email_address' not in session:
+        flash("Login to Access This Page","error")
+        return redirect(url_for('login'))
 
     prods = get_data("products")
     sale=get_data("sales")
@@ -65,46 +65,54 @@ def make_sales():
 @app.route('/dashboard')
 def dashboard():
     if 'email_address' not in session:
-        # Render dashboard template
+        flash("You are not logged in","error")
         return redirect(url_for("login"))
-    else:
-        # If user is not logged in, redirect to login page
-          
-        sp=sales_product()
-        names=[]
-        value=[]
-        for i in sp:
-            names.append(str(i[0]))
-            value.append(float(i[1]))
+    # If user is not logged in, redirect to login page
 
-        pp=profit_product()
-        names=[]
-        profit=[]
-        for i in pp:
-            names.append(str(i[0]))
-            profit.append(float(i[1]))
+    an=annual_sale()
+    year=[]
+    total=[]
+    for i in an:
+        year.append(str(i[0]))
+        total.append(f"{float(i[1]):.2f}")
 
-        
-    #sales per day on a line chart 
+    sp = sales_product()
+    names = []
+    value = []
+    for i in sp:
+        names.append(str(i[0]))
+        value.append(float(i[1]))
 
-    ds=daily_sales()
-    day=[]
-    sl=[]
+    pp = profit_product()
+    name = []
+    profit = []
+    for i in pp:
+        name.append(str(i[0]))
+        profit.append(float(i[1]))
 
+    # Sales per day on a line chart
+    ds = daily_sales()
+    day = []
+    sl = []
     for i in ds:
         day.append(str(i[0]))
         sl.append(float(i[1]))
 
-    dp=daily_profit()
-    day=[]
-    profit=[]
-
+    dp = daily_profit()
+    daily = []
+    profits = []
     for i in dp:
-        day.append(str(i[0]))
-        profit.append(float(i[1]))
+        daily.append(str(i[0]))
+        profits.append(float(i[1]))
 
-    return render_template('dashboard.html',names=names,value=value, profit=profit, day=day,sl=sl)
+    ap=annual_profit()
+    yearly= []
+    annualprofits = []
+    for i in ap:
+        yearly.append(str(i[0]))
+        annualprofits.append(f"{float(i[1]):.2f}")
 
+    return render_template('dashboard.html', yearly=yearly, annualprofits=annualprofits, year=year, total=total, len=len,  names=names, value=value, name=name, profit=profit, day=day, sl=sl, daily=daily, profits=profits)
 
  # insert users from registration
 
@@ -150,19 +158,12 @@ def login():
 def logout():
    
     session.pop('email_address', None)
-    return redirect(url_for('login'))
+    flash("Logged Out", "success")
+    return redirect(url_for('home'))
 
 
-@app.route('/contact', methods=['POST','GET'])
+@app.route('/contact')
 def contact():
-
-    full_name = request.form['full_name']
-    email_address = request.form['email_address']
-    phone_number = request.form['phone_number']
-    message = request.form['message']
-    value=(full_name,email_address,phone_number,message)
-    contact_us(value)
-    flash("Message Sent")
     return render_template("contact.html")
 
 # delete a product a
@@ -171,7 +172,17 @@ def delete_prod(id):
    
     delete_product(id)
     flash("Product deleted successfully.", "success")
-    return redirect(url_for('products'))
+    return redirect(url_for('products',id=id))
+
+
+# # delete a sale
+# @app.route('/delete_sales/<int:id>', methods=['POST','DELETE'])
+# def delete_sale(id):
+   
+#     delete_sale(id)
+#     flash("Sale deleted successfully.", "success")
+#     return redirect(url_for('Sales'))
+
 
 # delete multiple products at once
 
@@ -205,10 +216,19 @@ def edit_prod():
         return redirect(url_for('products'))
 
 
-@app.route('/search_results', methods=['GET'])
+@app.route('/search', methods=['GET'])
 def search_results():
-    products=get_data("products")
-    return render_template('products.html')
+    search_query = request.args.get('query')  # Get the search query from the URL parameter
+  
+    if search_query:
+        # Perform search query using the search_result function
+        results = search_result(search_query)
+    else:
+        results = []  # Empty list if no query provided
+        flash("No results found")
+    
+    return render_template('products.html', query=search_query, products=results)
+
 
 
 app.run(debug=True)

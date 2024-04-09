@@ -1,0 +1,33 @@
+.table-container {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-left: 40px; /* Adjust the margin as needed */
+     /* Add some right margin for better spacing */
+}
+
+/* Adjust the table padding */
+/* Adjust the table padding */
+.table tbody tr td,
+.table tbody tr th {
+    padding: 3px; /* Adjust the padding as needed */
+    margin: 0;
+}
+
+/* Adjust font size for better readability */
+.table {
+    font-size: 12px;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+
+.products {
+
+    font-weight: bold;
+}
+
+/* Remove right border from last column */
+
