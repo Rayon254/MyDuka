@@ -8,12 +8,6 @@
     font-size: 14px;
 }
 
-.card-body {
-
-    text-align: center;
-
-
-}
 
 .contactus {
 
@@ -27,3 +21,52 @@
     width: 950px;
 }
 
+.form-control2 {
+    height: 35px;
+    width: 220px;
+    padding-right: 10px;
+    padding-top: 10px;
+
+}
+
+.search-form {
+    margin-left: 520px;
+    margin-top: -70px;
+
+}
+
+
+
+
+
+.searchtext {
+
+    width: 290px;
+
+}
+
+.form-text-center {
+
+    margin-top: -45px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-container {
+    display: flex;
+    list-style: none;
+    padding: -10px;
+}
+
+.flex-container li {
+    margin-right: 30px;
+    /* Adjust margin as needed */
+}
+
+.loginform {
+
+    padding-bottom: 10px;
+}

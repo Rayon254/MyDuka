@@ -1,0 +1,107 @@
+{% extends "navbar.html" %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="../static/body.css" />
+<link rel="stylesheet" href="../static/form.css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="welcomehead">
+
+    <h5>Hello, {{ username }}</h5>
+
+</div>
+
+<div class="homeheading">
+    <h5>Welcome to MyDuka</h5>
+    <p>Transform Your Sales Experience with MyDuka!</p>
+</div>
+
+<div class="row">
+
+    <div class="sales-metrics col-md-6 ">
+        <div class="card">
+
+            <div class="card-body">
+                <h5 class="card-text title">Sales Metrics Dashboard</h5>
+                <p class="card-text"></p>
+                <p class="card-text">The charts encompass vital metrics such as daily sales, total sales,
+                    total profits and profits per product. These visualizations offer comprehensive insights into sales
+                    performance, revenue trends, and product profitability, empowering your business to make data-driven
+                    decisions and optimize your sales
+                    strategies effectively. <a href="/dashboard">Learn more</a> </p>
+                <a href="/dashboard" class="btn-metrics">View Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-stock col-md-6">
+        <div class="card">
+
+            <div class="card-body">
+                <h5 class="card-text title">Control Stock</h5>
+                <p class="card-text">Users can easily upload product
+                    information such as name, quantity, buying price, and selling price, saving time and
+                    streamlining inventory management. This facilitates seamless stock replenishment, ensuring
+                    that businesses have accurate and up-to-date product data to meet customer demands effectively.<a
+                        href="/products">Learn more</a></p>
+                <a href="/products" class="btn-control">Manage Products</a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row"> -->
+
+    <div class="sales-metrics col-md-6 ">
+        <div class="card">
+
+            <div class="card-body">
+                <h5 class="card-text title"> Record Sales</h5>
+                <p class="card-text"></p>
+                <p class="card-text">Users can efficiently
+                    input details such as product ID and quantity, facilitating seamless checkout experiences for
+                    customers. This streamlines the sales process, allowing businesses to efficiently track
+                    sales transactions and manage inventory levels effectively. This helps
+                    businesses enhance operational efficiency and deliver exceptional customer service.<a
+                        href="/sales">Learn more</a></p>
+                <a href="/sales" class="btn-metrics">Record Sales</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 ">
+        <div class="card">
+
+            <div class="card-body">
+                <h5 class="card-text title"></h5>
+                <p class="card-text"></p>
+
+                <a href="/" class=" "></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="socials">
+    <p>Follow us and stay up to date</p>
+    <a href="https://www.facebook.com/">
+        <i class="fab fa-facebook-square fa-xl"></i>
+    </a>
+    <a href="https://www.instagram.com/">
+        <i class="fa-brands fa-square-instagram fa-xl"></i>
+    </a>
+    <a href="https://www.twitter.com/">
+        <i class="fa-brands fa-x-twitter fa-xl"></i>
+    </a>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+{% endblock %}

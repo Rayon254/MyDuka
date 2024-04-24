@@ -2,106 +2,100 @@
 
 {% block head %}
 {{ super() }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../static/styles.min.css" />
+
+
 <link rel="stylesheet" href="../static/navigation.css" />
 <link rel="stylesheet" href="../static/charts.css" />
-
+<link rel="stylesheet" href="../static/table.css" />
+<link rel="stylesheet" href="../static/logo.css" />
+<link rel="stylesheet" href="../static/button.css" />
+<link rel="stylesheet" href="../static/form.css" />
+<link rel="stylesheet" href="../static/flash.css" />
 
 {% endblock %}
 
 {% block content %}
 
-<h5 class="dashboard" href="/dashboard">Admin Dashboard</h5>
-<!-- <div class="headoverview">
-    <h4>Overview</h4> -->
 
-    <div class="navbar2">
-        <p>{{pp}}</p>
-        <p>{{sp}}</p>
+<div class="body">
+    <p>{{pp}}</p>
+    <p>{{sp}}</p>
 
-        <div class="container mt-1">
+
+    <h5 class="dashboard">Admin Dashboard</h5>
+
+    <div class="container mt-1">
+        <div class="row">
+
+            {% for i in range(len(year)) %}
+            <div class="col-md-6">
+                <div class="card text-center totalannual">
+
+                    <div class="card-body annual">
+                        <h5 class="card-text title">Total Sales</h5>
+                        <p class="card-text"></p>
+                        <h3 class="card-text">KES {{ total[i] }}</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% for i in range(len(year)) %}
+            <div class="col-md-6 profits">
+                <div class="card text-center totalprofits">
+
+                    <div class="card-body annual">
+                        <h5 class="card-text title">Total Profits</h5>
+                        <p class="card-text"></p>
+                        <h3 class="card-text">KES {{ annualprofits[i] }}</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Pie chart container in the same row as Total Annual Sales -->
             <div class="row">
-                {% for i in range(len(year)) %}
+
                 <div class="col-md-6">
-                    <div class="card text-center totalannual">
-
-                        <div class="card-body annual">
-                            <h5 class="card-text title">Total Sales</h5>
-                            <p class="card-text"></p>
-                            <h3 class="card-text">KES {{ total[i] }}</h3>
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5>Total Daily Sales</h5>
+                            <canvas class="bar-chart" id="bar-chart"></canvas>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-                {% for i in range(len(year)) %}
-                <div class="col-md-6 profits">
-                    <div class="card text-center totalprofits">
-
-                        <div class="card-body annual">
-                            <h5 class="card-text title">Total Profits</h5>
-                            <p class="card-text"></p>
-                            <h3 class="card-text">KES {{ annualprofits[i] }}</h3>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-                <!-- Pie chart container in the same row as Total Annual Sales -->
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5>Total Daily Sales</h5>
-                                <canvas class="bar-chart" id="bar-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5>Profit per Product</h5>
-                                <canvas class="bar-chart2" id="bar-chart2"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5>Total Daily Sales</h5>
-                                <canvas class="line-chart" id="line-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5>Total Daily Profits</h5>
-                                <canvas class="line-chart2" id="line-chart2"></canvas>
-                            </div>
+                <div class="col-md-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5>Profit per Product</h5>
+                            <canvas class="bar-chart2" id="bar-chart2"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5>Total Daily Sales</h5>
+                            <canvas class="line-chart" id="line-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5>Total Daily Profits</h5>
+                            <canvas class="line-chart2" id="line-chart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,5 @@
 import psycopg2
+ 
 
 #connect to database 
 
@@ -13,17 +14,15 @@ conn=psycopg2.connect(
 curr=conn.cursor()  # used to perform data operations i.e select, update
 
 def get_products():
-    curr.execute("select * from products;")
+    curr.execute("select * from products order by id;")
     prods=curr.fetchall()
-    for prod in prods :   
-         return(prod)
-
-# get_products()
+    # for prod in prods :   
+    return prods
 
 
 #write a function to get sales define a cfunction (def)
 
-def calc_sales():
+def calc_sales(): 
     curr.execute("select * FROM sales")
     sales=curr.fetchall()
     for sale in sales:
@@ -32,7 +31,7 @@ def calc_sales():
 # calc_sales()
 
 def get_data(table_name):
-    select=f"select * from {table_name};"
+    select=f"select * from {table_name} order by ID ASC;"
     curr.execute(select)  # contains the sql querry you want to run   curr=cursor.execute
     data=curr.fetchall()
     return(data)
@@ -53,11 +52,20 @@ def insert_products(values):
 
 # insert sales
 def insert_sales(values):
-    insert="insert into sales(pid,quantity,created_at)values(%s,%s,now());"
+    pid, quantity = values[0], values[1]
+    insert_sale="insert into sales(pid,quantity,created_at)values(%s,%s,now());"
+    update_stock = "UPDATE products SET stock_quantity = stock_quantity - %s WHERE id = %s"
 
-    curr.execute(insert,values)
-    conn.commit()
-
+    try:
+        # Insert sale record
+        curr.execute(insert_sale, values)
+        # Update stock quantity
+        curr.execute(update_stock, (quantity, pid))
+        conn.commit()
+        print("Sale recorded successfully.")
+    except Exception as e:
+        conn.rollback()
+        print("Error occurred while recording sale:", e)
 
 
 #sales per product
@@ -141,25 +149,37 @@ def contact_us(values):
 
 
 
-# delete a product
+# delete products
 
-def delete_product(id):
+def delete_products(product_ids):
+    if not product_ids:
+        return "No product IDs provided for deletion."
+    
     try:
-        # Delete associated records in the sales table first
-        delete_sales_query = "DELETE FROM sales WHERE pid = %s;"
-        curr.execute(delete_sales_query, (id,))
-        conn.commit()
-     
-        # Then delete the product from the products table
-        delete_product_query = "DELETE FROM products WHERE id = %s;"
-        curr.execute(delete_product_query, (id,))
+        for product_id in product_ids:
+            # Delete associated sales records for the product
+            delete_sales_for_product(product_id)
+
+        # Once associated sales records are deleted, delete the products
+        placeholders = ', '.join(['%s'] * len(product_ids))
+        delete_query = f"DELETE FROM products WHERE id IN ({placeholders});"
+        curr.execute(delete_query, product_ids)
         conn.commit()
 
-        return("Product deleted successfully.")
+        return "Selected products deleted successfully."
     except psycopg2.Error as e:
-        conn.rollback()  # Rollback the transaction if an error occurs
-        return(f"Error deleting product: {e}")
+        conn.rollback()
+        return f"Error deleting products: {e}"
 
+
+
+def delete_sales_for_product(product_id):
+    delete_query = "DELETE FROM sales WHERE pid = %s;"
+    curr.execute(delete_query, (product_id,))
+    conn.commit()
+
+
+# delete_sale(9)
 
 def delete_sale(id):
     # Delete the sale from the sales table
@@ -167,24 +187,34 @@ def delete_sale(id):
     curr.execute(delete_query, (id,))
     conn.commit()
 
-# delete_sale(9)
 
-
-
-# edit a product
-
-def edit_product(id, new_product_name, new_buying_price, new_selling_price, new_stock_quantity):
-    update_query = "UPDATE products SET product_name = %s, buying_price = %s, selling_price = %s, stock_quantity = %s WHERE id = %s;"
-    curr.execute(update_query, (new_product_name, new_buying_price, new_selling_price, new_stock_quantity, id))
-    conn.commit()
-
+# search for a product
 def search_result(product_name):
     search_query = "SELECT * FROM products WHERE name LIKE %s;"
     # Construct the wildcard search pattern
-    search_pattern = '%' + product_name + '%'
+    search_pattern = '%' + str(product_name[0]) + '%'
     curr.execute(search_query, (search_pattern,))
-    check2 = curr.fetchone()
-    return check2
+    result = curr.fetchone()
+    print("Search Query:", search_query)
+    print("Search Pattern:", search_pattern)
+    print("Result:", result)
+    return result
+
+
+
+
+
+
+
+
+   
+    
+
+
+
+
+
+
 
 
 

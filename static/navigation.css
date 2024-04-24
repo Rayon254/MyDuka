@@ -1,377 +1,73 @@
-/* Adjust the margin-top and margin-bottom properties as needed */
-.sidebar-nav {
-    margin-bottom: 20px;
-    padding-top: 129px;
-
-}
-
-.logo-img {
-    margin-right: 10px;
-    /* Adjust this value as needed */
-}
-
-/* Adjust the height and width of the logo as needed */
-.logos {
-    color: #008000;
-    height: 110px;
-    /* Adjusted height */
-    width: 140px;
-
-}
-
-/* Adjust the height and width of the navbar-brand2 */
-.navbar-brand2 {
-    min-height: 10px;
-    display: flex;
-    align-items: center;
-
-}
-
-.navbar-nav .nav-link {
-    font-size: 18px
-}
-
-.navbar2 {
-    /* entire body */
-
-    padding-left: 30px;
-
-}
-
-
-
-
-/* Style for the buttons */
-.btn,
-.nav-button,
-.product-button,
-
-.btn-logout,
-.btnmodal {
-    background-color: green;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Button hover effect */
-.btn:hover,
-.nav-button:hover,
-.product-button:hover,
-.btn-search:hover,
-.btn-logout:hover,
-.btnmodal:hover {
-    background-color: darkgreen;
-}
-
-/* Button active state */
-.btn:active,
-.nav-button:active,
-.product-button:active,
-.btn-search:active,
-.btn-logout:active,
-.btnmodal:active {
-    background-color: green;
-}
-
-.nav-button {
-
-
-    padding-left: 260px;
-}
-
-.nav-link {
-
-    font-size: 10px;
-
-}
-
-
-.product-button {
-
-    background-color: green;
-    color: white;
-    padding: 5px;
-
-}
-
-
-
-.btn-logout {
-    background-color: green;
-    color: white;
-
-
-
-}
-
-.btn2-logout {
-    padding-left: 280px;
-
-}
-
-
-.nav-item {
-
-    font-size: 4px;
-}
-
-
-
-.btn-search {
-    background-color: green;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-search:hover {
-    background-color: darkgreen;
-}
-
-.btn-search:active {
-    background-color: green;
-}
-
-
-.nav .navbar-nav {
-
-    padding-left: 10px;
-    font-size: 13px;
-
-}
-
-.navbar-nav .nav-item .nav-link {
-    font-size: 16px !important;
-    /* Adjust the font size as needed */
-    font-weight: bold !important;
-
-}
-
-.navbar-nav .nav-link {
-    font-size: 16px !important;
-    font-weight: bold !important;
-    padding-left: 10px;
-    /* Adjust this value as needed */
-}
-
-
-.btnmodal {
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    border-color: green;
-}
-
-
-.headingimage {
-
-    padding-right: 50px;
-    height: 400px;
-}
-
-
-
-.navbar-nav {
-    display: flex;
-    /* Use flexbox to align items horizontally */
-
-
-}
-
-
-.nav-item:last-child {
-    margin-right: 0;
-    /* Remove margin from the last nav item */
-}
-
-
-
-
-/*  */
-
-.btn-danger,
-.btn-primary,
-.btn-secondary {
-
-    padding: 7px;
-    font-size: 12px;
-}
-
-.btn-product {
-
-
-    padding: 5px;
-    font-size: 12px;
-    background-color: #008000;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    width: 120px;
-    margin-right: 140px;
-}
-
-.salesbtn {
-
-    background-color: #008000;
-    color: white;
-    border-color: #008000;
-    font-weight: bold;
-    margin-left: 740px;
-    padding: 5px;
-    border-radius: 2px;
-
-}
-
-
-.btn-outline-secondary {
-    padding: 5px 10px;
-    font-size: 12px;
-    height: 34px;
-    width: auto;
-    font-weight: bold;
-
-}
-
-.form-control2 {
-    height: 35px;
-    width: 220px;
-    padding-right: 10px;
-
-}
-
-.search-form {
-    margin-right: 150px;
-
-}
-
-/* Adjust the margin between buttons */
-
-.loginlogo {
-
-    color: rgb(179, 212, 179);
-    font-weight: bold;
-
-}
-
-
-
-/* In your CSS file */
-.flash-success {
-    color: green;
-    background-color: lightgreen;
-    border: 1px solid darkgreen;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.flash-error {
-    color: red;
-    background-color: lightcoral;
-    border: 1px solid darkred;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-/* Define styles for other flash message categories as needed */
-.btn-submit {
-
-    background-color: green;
-    color: white;
-    padding: 5px;
-    border-radius: 6px;
-    border-color: green;
-    font-size: 12px;
-}
-
-label .hide-menu .table {
-
-    color: rgb(0, 0, 0);
-}
-
-
-.dropdown {
-
-    padding-right: 40px;
-
-}
-
-.logout {
-
-    padding-left: 920px;
-    padding-top: 7px;
-
-}
-
-.btn-link {
-
-    padding-top: 2px;
-    padding: 3px;
-    margin-right: 90px;
-    background-color: white;
-    color: black;
-}
-
-
-.result {
-
-    margin-left: 60px;
-
-}
-
-.result ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 20px;
-    gap: 100px;
-    /* Adjust the space between items */
-    margin-top: 20px;
-
-}
-
-
-.form-check-input {
-
-    border-color: black;
-}
-
-.logo-img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0;
-    /* Remove any default padding */
-    margin: 0;
-    /* Remove any default margin */
-}
-
-.registrationlogo {
-    margin: -25px;
-
-}
-
-.card-body {
-
-    font-weight: bold;
-
-}
-
-
-
 .app-header {
-    background-color: lightcyan;
+    background-color: rgb(236, 247, 239);
+    border-bottom: 3px solid #ccc;
     height: 60px;
 }
 
-.dashboard {
+
+.body {
+
+    margin-top: 90px;
+    padding-left: 300px;
+    background-color: white;
 
 
-    font-weight: bold;
-    padding-left: 50px;
 }
+
+.dashboard {
+    font-weight: bolder;
+    padding-left: 45px;
+}
+
+.products {
+
+    font-weight: bolder;
+    padding-left: 55px;
+
+
+}
+
+.sales {
+
+    font-weight: bolder;
+    padding-left: 55px;
+
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 260px;
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    margin-left: 20px;
+    bottom: -80px;
+    border-right: 1px solid #ccc;
+    /* Border on the right side */
+}
+
+.sidebar a {
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Align items vertically */
+    color: black;
+    text-decoration: none;
+    padding: 18px;
+
+
+}
+
+.sidebar a i {
+    margin-right: 10px;
+    /* Adjust spacing between icon and text */
+}
+
+
+/* Links on mouse-over */
+.sidebar a:hover {
+    background-color: green;
+    color: white;
+}
+

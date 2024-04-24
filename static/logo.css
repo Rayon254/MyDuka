@@ -1,0 +1,31 @@
+.logos {
+
+    height: 110px;
+    width: 140px;
+    margin-top: -25px;
+    padding-left: 20px;
+}
+
+
+.brand-logo {
+    /* myduka logo */
+    padding-left: 80px;
+
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+
+
+}
+
+
+
+.loginlogo {
+
+    color: rgb(179, 212, 179);
+    font-weight: bold;
+
+}
+

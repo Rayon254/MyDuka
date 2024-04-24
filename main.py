@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request, redirect, url_for, flash, session
-from database import annual_profit, annual_sale, search_result, insert_products, get_data, insert_sales, sales_product, profit_product, daily_sales, daily_profit, insert_users, check_email, check_logins, contact_us, delete_product, edit_product
+from database import  get_products, annual_profit, annual_sale, search_result, insert_products, get_data, insert_sales, sales_product, profit_product, daily_sales, daily_profit, insert_users, check_email, check_logins, contact_us, delete_products
 
 
 #create a flask instance
@@ -14,7 +14,17 @@ def hello():
 
 @app.route('/home')
 def home():
-    return render_template('index.html')
+    if 'email_address' not in session:
+        flash("You are not logged in", "error")
+        return redirect(url_for("login"))
+    
+    username = session.get('username')
+    if not username:
+        # Handle the case when the username is not in the session
+        flash("Username not found in session", "error")
+        return redirect(url_for("login"))
+    
+    return render_template('home.html', username=username)
 
 
 @app.route('/products')
@@ -23,7 +33,7 @@ def products():
         flash("Login to Access This Page","error")
         return redirect(url_for('login'))
     
-    prods=get_data("products")
+    prods=get_products( )
     return render_template("products.html",products=prods,id=id)
 
 @app.route('/sales')
@@ -32,7 +42,7 @@ def sales ():
         flash("Login to Access This Page","error")
         return redirect(url_for('login'))
 
-    prods = get_data("products")
+    prods = get_products( )
     sale=get_data("sales")
     return render_template('sales.html',sales=sale,products=prods)
 
@@ -54,11 +64,21 @@ def add_products():
 
 @app.route('/make_sales', methods=['POST'])
 def make_sales():
-    
-    pid=request.form['pid']
-    quantity=request.form['quantity']
-    sale=(pid,quantity)
-    insert_sales(sale)
+    try:
+        pid = request.form['pid']
+        quantity = int(request.form['quantity'])
+        
+        # Perform input validation
+        if not pid or quantity <= 0:
+            flash("Invalid input. Please provide a valid product ID and quantity.", "error")
+            return redirect(url_for('sales'))
+        
+        sale = (pid, quantity)
+        insert_sales(sale)
+        flash("Sale recorded successfully.", "success")
+    except Exception as e:
+        # Handle errors
+        flash(f"Error occurred while recording sale: {str(e)}", "error")
     return redirect(url_for('sales'))
 
 
@@ -132,6 +152,8 @@ def registration():
         else:
             insert_users(value)
             flash("Registration Successful", "success")
+            session['email_address'] = email_address  # Store email address in session
+            session['full_name'] = full_name 
         return redirect(url_for('login'))
     return render_template("registration.html")
 
@@ -140,14 +162,18 @@ def registration():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
+
         email_address = request.form['email_address']
         password = request.form['password']
+
+        username = email_address.split('@')[0]
         
         if check_logins(email_address, password):
             # If login is successful, set session data and redirect to dashboard
             session['email_address'] = email_address
+            session['username'] = username
             flash("Access granted", "success")
-            return redirect(url_for("dashboard"))
+            return redirect(url_for("home"))
         else:
             flash("Wrong email address or password. Please try again.","error")
       
@@ -166,69 +192,30 @@ def logout():
 def contact():
     return render_template("contact.html")
 
-# delete a product a
-@app.route('/delete_product/<int:id>', methods=['POST','DELETE'])
-def delete_prod(id):
-   
-    delete_product(id)
-    flash("Product deleted successfully.", "success")
-    return redirect(url_for('products',id=id))
-
-
-# # delete a sale
-# @app.route('/delete_sales/<int:id>', methods=['POST','DELETE'])
-# def delete_sale(id):
-   
-#     delete_sale(id)
-#     flash("Sale deleted successfully.", "success")
-#     return redirect(url_for('Sales'))
-
 
 # delete multiple products at once
 
-
 @app.route('/delete_products', methods=['POST'])
-def delete_all():
-
-    product_ids = request.form.getlist('product_ids[]')  # Assuming the product IDs are sent as an array from the frontend
-    for id in product_ids:
-        delete_product(id)
-    flash("Products deleted successfully", "success")
-    return redirect(url_for('products'))
-
-
-@app.route('/edit_product/', methods=['POST','GET'])
-def edit_prod():
+def delete_prods():
     if request.method == 'POST':
-        id = request.form['id']
-        new_product_name = request.form['new_product_name']
-        new_buying_price = request.form['new_buying_price']
-        new_selling_price = request.form['new_selling_price']
-        new_stock_quantity = request.form['new_stock_quantity']
-        
-        # Call the function to edit the product in the database
-        edit_product(id, new_product_name, new_buying_price, new_selling_price, new_stock_quantity)
-        
-        # Redirect back to the products page or wherever you want
-        return redirect(url_for('products'))
-    else:
-        # Handle other HTTP methods if necessary
-        return redirect(url_for('products'))
+        product_ids = request.form.getlist('product_ids[]')
+        result_message = delete_products(product_ids)
+        flash(result_message, "success")
+        return redirect(url_for('products')) 
 
 
 @app.route('/search', methods=['GET'])
-def search_results():
-    search_query = request.args.get('query')  # Get the search query from the URL parameter
-  
-    if search_query:
-        # Perform search query using the search_result function
-        results = search_result(search_query)
-    else:
-        results = []  # Empty list if no query provided
-        flash("No results found")
-    
-    return render_template('products.html', query=search_query, products=results)
 
+def search_results():
+    search_query = request.args.get('query')
+   
+    if search_query:
+        products = get_products()  # Fetch all products from the database
+        filtered_products = [product for product in products if search_query.lower() in product[1].lower()]  # Filter products based on the search query
+    else:
+        filtered_products = []
+
+    return render_template('products.html', search_query=search_query, products=filtered_products)
 
 
 app.run(debug=True)

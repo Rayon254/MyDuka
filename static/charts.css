@@ -8,28 +8,22 @@
     background-color: lightgreen;
     border-radius: 13px;
     width: 300px;
+    height: 120px;
     margin-left: 180px;
 
 }
 
-
-.myPieChart {
-
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    width: 300px;
-    height: 300px;
-}
 
 .totalprofits {
 
     background-color: lightcoral;
     border-radius: 13px;
     width: 300px;
+    height: 120px;
 }
 
 
-.navbar2 {
+.card {
 
-    padding-top: 35px;
+    margin-top: 60px;
 }

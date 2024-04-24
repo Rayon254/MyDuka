@@ -1,0 +1,50 @@
+.row {
+
+    padding-left: 280px;
+}
+
+.welcomehead {
+
+    margin-left: 350px;
+    padding-top: 90px;
+}
+
+.homeheading {
+
+    padding-left: 260px;
+    align-items: center;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.sales-metrics {
+
+    padding-left: 150px;
+}
+
+.control-stock {
+
+    padding-right: 150px;
+}
+
+.card-text {
+
+    font-size: 13px;
+    margin: 0;
+
+}
+
+.title {
+
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.socials {
+    padding-top: 10px;
+    padding-left: 400px;
+    text-align: center;
+    font-weight: bolder;
+
+}

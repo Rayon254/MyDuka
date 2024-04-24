@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My DUKA</title>
-    <link rel="icon" href="/static/logo2.png" type="image/x-icon" class="">
-
+    <title>MyDuka</title>
+    <link rel="icon" href="static/images/icon.png" type="image/x-icon" class="icon">
     <link rel="stylesheet" href="../static/styles.min.css" />
     <link rel="stylesheet" href="../static/indexnav.css" />
-    <link rel="stylesheet" href="../static/simplebar.css" />
-    <link rel="stylesheet" href="../static/tabler-icons.css" />
+    <link rel="stylesheet" href="../static/logo.css" />
+    <link rel="stylesheet" href="../static/button.css" />
+    <link rel="stylesheet" href="../static/flash.css" />
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +24,7 @@
     <nav class="navbar navbar-expand-sm bg-light">
         <!-- Links -->
         <ul class="navbar-nav mr-auto"> <!-- Added "mr-auto" class to push these items to the far left -->
-            <li class="brand-logo"><img src="/static/logo.png" href="/home" class="logo"></a></li>
+            <li class="brand-logo"><img src="static/images/logo.png" href="/home" class="logo"></a></li>
             <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
@@ -32,11 +34,9 @@
         <ul class="navbar-nav right"> <!-- Added "right" class to push these items to the far right -->
             <li class="nav-item"><a class="nav-link" href="/login" class="login"><i class="fa-solid fa-user fa-sm"></i>
                     Log In </a></li>
-    
             <li>
-                <div class="unlimited-access-title me-3">
-                    <a href="/registration"  class="btn btn-registration fs-2 fw-semibold lh-sm">Create An Account</a>
-                </div>
+
+                <button class="btn-registration"><a href="/registration" class="btn-registration">Create An Account</a></button>
             </li>
         </ul>
     </nav>
@@ -45,10 +45,7 @@
             <h5 class="heading">Transform Your Sales <br> Experience with <br> MyDuka! <br> <button
                     class="contactbutton"><a href="/login" class="contactbutton">Get Started</a></button>
             </h5>
-
         </div>
-
-
     </div>
 
 
